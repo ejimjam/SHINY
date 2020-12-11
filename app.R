@@ -17,9 +17,6 @@ weather <- read.csv(text = getURL("https://github.com/ejimjam/data/blob/main/Wea
 
 #Read data from Edwin's modified version to predict the probability of Edwin having back and knees ache
 #I did not setwd here but just did it to walk through instructions on SHINY that resonated well with me
-#weather <- read.csv("c:/Users/edjim/Documents/R_Practice/Shiny/Trials_Shiny_2020/WeatherWeather_pain.csv", header = TRUE)
-
-#fileinputs <- "c:/Users/edjim/Documents/R_Practice/Shiny/Trials_Shiny_2020/Weatherinput.csv"
 
 #This helped clean up the factor that were not included in the original
 weather$play = factor(weather$play) 
