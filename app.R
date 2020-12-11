@@ -12,15 +12,23 @@ library(data.table)
 library(RCurl)
 library(randomForest)
 
+#rsconnect::deployApp('https://github.com/ejimjam/SHINY/blob/main/')
+
+# Import libraries
+
 # Read data from original source to get the probability if you will play golf based on the weather condition
-weather <- read.csv(text = getURL("https://github.com/ejimjam/data/blob/main/Weather_pain.csv") )
+weather <- read.csv(text = getURL("https://github.com/ejimjam/SHINY/blob/main/Weather_pain.csv") )
 
 #Read data from Edwin's modified version to predict the probability of Edwin having back and knees ache
 #I did not setwd here but just did it to walk through instructions on SHINY that resonated well with me
+#weather <- read.csv("Weather_pain.csv", header = TRUE)
+
+fileinputs <- read.csv(text = getURL("https://github.com/ejimjam/SHINY/blob/main/input.csv") )
 
 #This helped clean up the factor that were not included in the original
 weather$play = factor(weather$play) 
 weather$outlook = factor(weather$outlook) 
+ 
 
 # Build model
 model <- randomForest(play ~ ., data = weather, ntree = 500, mtry = 4, importance = TRUE)
